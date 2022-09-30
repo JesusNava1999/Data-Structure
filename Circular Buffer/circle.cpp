@@ -1,8 +1,6 @@
-#include <iostream>
 #include "circle.hpp"
-
+#include <iostream>
 using namespace std;
-
 circle::circle(int c){
 	n=c;
 	s=0;
@@ -19,7 +17,7 @@ int circle::forth(int x){
 int circle::back(int x){
 	return ((x+n-1)%n);
 }
-void circle::enqueueFirst(int x){
+void circle::enqueueLast(int x){
 	if(!full()){
 		cout << r << "	<- R";
 		data[r] = x;
@@ -37,7 +35,7 @@ int circle::dequeueFirst(){
 	s--;
 	return x;	
 }
-void circle::enqueueLast(int x){
+void circle::enqueueFirst(int x){
 	if(!full()){	
 		f = back(f);
 		cout << f << "	<- F";

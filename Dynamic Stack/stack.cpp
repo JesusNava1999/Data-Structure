@@ -1,5 +1,5 @@
-#include "stack.h"
-#include "node.h"
+#include "stack.hpp"
+#include "node.hpp"
 #include <iostream>
 #include <stddef.h>
 stack::stack(int c){
@@ -39,8 +39,8 @@ int stack::pop(){
 		return 0;
 	}	    
     node *aux = list;
-	int x = aux -> data();
-	list = aux -> siguiente(); 
+	int x = aux -> data(); 
+    list -> siguiente(aux);
     delete aux;    
     s--;
     return x;

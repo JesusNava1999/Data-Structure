@@ -6,7 +6,6 @@ class queue {
 	int n;
 	int s;
 	node *list;
-	node *p; 
 	public:
 		queue(int);
 		~queue();

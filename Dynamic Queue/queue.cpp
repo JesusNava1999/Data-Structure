@@ -1,46 +1,68 @@
 #include "queue.hpp"
-#include "node.hpp"
 #include <stddef.h>
 #include <iostream>
-using namespace std;
 queue::queue(int c){
 	n=c;
 	s=0;
 	list = NULL;
 }
 
-queue::~queue(){}
+queue::~queue(){
+	delete [] list;
+}
 
-void queue::enqueue(int x){	
-	if(!list){	
+void queue::enqueue(int x){
+	node *p,*q;	
+	if (full()==true){
+		printf("Cola Llena\n");
+		return;
+	} 
+	if (list==NULL){
 		list = new node(x);
 		p = list;
-		s++;	
-		return;		 		
-	}
-	if (!full()){
+		return;
+	} else {		
+		while(p==NULL){
+			q = p;
+			p -> siguiente(q);
+		}
 		node *aux = new node(x);
 		p -> siguiente(aux);
-		p = aux;
-		s++;
-		return;					
-	} else {
-		cout << "Cola llena..." << endl;
-		return;
+		aux = p;
+		s++;							
 	}
-
 }
 
 int queue::dequeue(){
-	if(empty()){
-		printf("Fila vacia	");
+	int x;
+	if (list==NULL){
+		printf("\nCola Vacia	");
 		return 0;
-	}	    
-    node *aux = list;
-	int x = aux -> data();
-	list = aux -> siguiente();    
-    delete aux;    
-    s--;
-    return x;
+	}
+	if (empty()==true){
+		printf("\nCola Vacia	");
+		return 0;
+	} else {
+		node *p,*q;
+		p = list;
+		while(p==NULL){
+			q = p;
+			p -> siguiente(q);			
+		}
+		x = p -> data();
+		q = NULL;
+		s--;
+		delete p;
+		return x; 
+	}
 }
 
+int queue::front(){
+	node *p,*q;
+	p = list;
+	while(p!=NULL){
+		q = p;
+		p -> siguiente(q);			
+	}
+	return p -> data();	
+}

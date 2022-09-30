@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "stack.cpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -10,7 +10,7 @@ int main(){
 	int x;
 	while(!s.full()){
 		x = rand()%20+1;
-		cout << x << " <-	Dato";		 
+		cout << x << "	Dato";		 
 		s.push(x);
 		cout << endl;
 	}	
@@ -21,4 +21,3 @@ int main(){
 	s.~stack();
 	return 0;	
 }
-

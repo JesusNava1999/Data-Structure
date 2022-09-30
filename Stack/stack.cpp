@@ -7,14 +7,14 @@ stack::stack(int c){
 stack::~stack(){
 	delete [] data;
 }
-void stack::push(int x){  //Añadir datos a la pila
-	data[s] = x; //data[s++] = x;
+void stack::push(int x){
+	data[s] = x;
 	s++;
 }
-int stack::pop(){ //Eliminar datos de la pila
+int stack::pop(){
 	s--;
-	return data[s]; //return data[--s]
+	return data[s];
 }
-int stack::top(){ //Mostrar ultimo dato de la pila
-	return data[s-1]; //No modifica (s)
+int stack::top(){
+	return data[s-1];
 }

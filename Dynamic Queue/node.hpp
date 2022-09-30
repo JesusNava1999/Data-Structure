@@ -14,10 +14,6 @@ class node {
 		~node(){
 		}
 		
-		node *siguiente(){
-			return _next;
-		}
-		
 		void siguiente(node *p){
 			_next = p;
 		}
